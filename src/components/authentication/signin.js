@@ -4,7 +4,8 @@ import React, {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  AsyncStorage
 } from 'react-native';
 import Button from '../common/button';
 import Firebase from 'firebase';
@@ -21,9 +22,6 @@ class Signin extends React.Component {
 	  	password: '',
 	  	errorMessage: ''
 	  };
-    ref.onAuth((authData) => {
-      console.log(authData);
-    })
 	}
 
   render() {
@@ -69,8 +67,9 @@ class Signin extends React.Component {
   			});
   			console.log("Login Failed!", error);
   		} else {
+        AsyncStorage.setItem('authData', JSON.stringify(authData));
 				this.props.navigator.immediatelyResetRouteStack([{name: 'list'}]);
-  			console.log("Authenticated sccessfully with payload:", authData);
+  			//console.log("Authenticated sccessfully with payload:", authData);
   		}
   	}, {
   		remember: 'sessionOnly'

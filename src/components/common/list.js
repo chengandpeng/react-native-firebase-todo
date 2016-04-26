@@ -3,11 +3,13 @@
 import React, {
   StyleSheet,
   View,
-  Text
+  Text,
+  AsyncStorage
 } from 'react-native';
 import Firebase from 'firebase';
+import styles from '../../styles';
 
-const Url =  'https://authreactnative.firebaseIO.com';
+const ref = new Firebase("https://authreactnative.firebaseIO.com");
 
 class List extends React.Component {
 	constructor(props) {
@@ -18,34 +20,32 @@ class List extends React.Component {
 	  };
 	}
 	componentWillMount() {
-		const ref = new Firebase(Url);
-		const authData = ref.getAuth();
-
-		//console.log(authData);
-		if(authData) {
-			this.setState({
-				user: authData
+		AsyncStorage.getItem('authData')
+			.then((authData_json) => {
+				let authData = JSON.parse(authData_json);
+				this.setState({
+					user: authData
+				});
 			});
-		}
 	}
   render() {
   	if(!this.state.user)
-  		return <Text>Loading...</Text>
+  		return (
+  		 <View sytle={styles.container}>
+  		 	<Text>Loading...</Text>
+  		 </View>
+  		);
 
     return (
       <View style={styles.container} >
-      	<Text>Welecom back! {this.state.user.password.email}</Text>
+      	<Text>{this.state.user.password.email} </Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	}
+const _styles = StyleSheet.create({
+
 });
 
 
