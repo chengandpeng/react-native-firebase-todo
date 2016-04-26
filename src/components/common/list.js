@@ -8,6 +8,7 @@ import React, {
 } from 'react-native';
 import Firebase from 'firebase';
 import styles from '../../styles';
+import Header from './header';
 
 const ref = new Firebase("https://authreactnative.firebaseIO.com");
 
@@ -37,15 +38,22 @@ class List extends React.Component {
   		);
 
     return (
-      <View style={styles.container} >
-      	<Text>{this.state.user.password.email} </Text>
+      <View style={_styles.container} >
+      	<View style={_styles.header}>
+   				<Header route={this.props.route} navigator={this.props.navigator} user={this.state.user} />
+   			</View>
       </View>
     );
   }
 }
 
 const _styles = StyleSheet.create({
-
+	container: {
+		flex:1
+	},
+	header: {
+		marginTop: 20
+	}
 });
 
 
