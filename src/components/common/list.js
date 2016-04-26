@@ -9,7 +9,7 @@ import Firebase from 'firebase';
 
 const Url =  'https://authreactnative.firebaseIO.com';
 
-class Tweets extends React.Component {
+class List extends React.Component {
 	constructor(props) {
 	  super(props);
 	
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Tweets;
+export default List;

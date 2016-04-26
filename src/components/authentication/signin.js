@@ -69,7 +69,7 @@ class Signin extends React.Component {
   			});
   			console.log("Login Failed!", error);
   		} else {
-				this.props.navigator.immediatelyResetRouteStack([{name: 'tweets'}]);
+				this.props.navigator.immediatelyResetRouteStack([{name: 'list'}]);
   			console.log("Authenticated sccessfully with payload:", authData);
   		}
   	}, {

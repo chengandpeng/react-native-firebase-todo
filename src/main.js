@@ -4,7 +4,7 @@ import React, {
 } from 'react-native';
 import Signin from './components/authentication/signin';
 import Signup from './components/authentication/signup';
-import Tweets from './components/tweets/tweets';
+import List from './components/common/list';
 import Firebase from 'firebase';
 
 const Url =  'https://authreactnative.firebaseIO.com';
@@ -12,7 +12,7 @@ const Url =  'https://authreactnative.firebaseIO.com';
 const ROUTES = {
 	signin: Signin,
 	signup: Signup,
-	tweets: Tweets
+	list: List
 }
 
 class main extends React.Component {
