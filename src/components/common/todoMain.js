@@ -9,10 +9,11 @@ import React, {
 import Firebase from 'firebase';
 import styles from '../../styles';
 import Header from './header';
+import ListBody from './listBody';
 
 const ref = new Firebase("https://authreactnative.firebaseIO.com");
 
-class List extends React.Component {
+class todoMain extends React.Component {
 	constructor(props) {
 	  super(props);
 	
@@ -42,6 +43,9 @@ class List extends React.Component {
       	<View style={_styles.header}>
    				<Header route={this.props.route} navigator={this.props.navigator} user={this.state.user} />
    			</View>
+   			<View style={_styles.listBody}>
+   				<ListBody user={this.state.user} />
+   			</View>
       </View>
     );
   }
@@ -52,9 +56,13 @@ const _styles = StyleSheet.create({
 		flex:1
 	},
 	header: {
+		flex: 1,
 		marginTop: 20
+	},
+	listBody: {
+		flex: 16,
 	}
 });
 
 
-export default List;
+export default todoMain;

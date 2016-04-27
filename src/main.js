@@ -6,7 +6,7 @@ import React, {
 } from 'react-native';
 import Signin from './components/authentication/signin';
 import Signup from './components/authentication/signup';
-import List from './components/common/list';
+import TodoMain from './components/common/todoMain';
 import Firebase from 'firebase';
 import styles from './styles';
 
@@ -15,7 +15,7 @@ const ref = new Firebase("https://authreactnative.firebaseIO.com");
 const ROUTES = {
 	signin: Signin,
 	signup: Signup,
-	list: List
+	todoMain: TodoMain
 }
 
 class main extends React.Component {
@@ -36,7 +36,7 @@ class main extends React.Component {
 						if(error) {
 							this.setState({component: "signin"});
 						} else {
-							this.setState({component: "list"});
+							this.setState({component: "todoMain"});
 						}
 					});
 				} else {

@@ -68,7 +68,7 @@ class Signin extends React.Component {
   			console.log("Login Failed!", error);
   		} else {
         AsyncStorage.setItem('authData', JSON.stringify(authData));
-				this.props.navigator.immediatelyResetRouteStack([{name: 'list'}]);
+				this.props.navigator.immediatelyResetRouteStack([{name: 'todoMain'}]);
   			//console.log("Authenticated sccessfully with payload:", authData);
   		}
   	}, {
