@@ -33,10 +33,14 @@ class Signin extends React.Component {
         	</Text>
         </View>
         <View style={_styles.body} >
-        	<TextInput placeholder={"Email"} style={[styles.input]} 
+        	<TextInput 
+          autoCapitalize={'none'}
+          placeholder={"Email"} style={[styles.input]} 
         	onChangeText={(text) => this.setState({email: text})}
         	value={this.state.email} />
-        	<TextInput placeholder={"Password"} secureTextEntry={true} style={[styles.input]}
+        	<TextInput 
+          autoCapitalize={'none'}
+          placeholder={"Password"} secureTextEntry={true} style={[styles.input]}
         	onChangeText={(text) => this.setState({password: text})}
         	value={this.state.password} />
         	<Text style={styles.error} >{this.state.errorMessage}</Text>

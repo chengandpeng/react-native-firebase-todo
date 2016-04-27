@@ -4,7 +4,8 @@ import React, {
   StyleSheet,
   View,
   Text,
-  TextInput
+  TextInput,
+  AsyncStorage
 } from 'react-native';
 import Firebase from 'firebase';
 import Button from '../common/button';
@@ -29,12 +30,14 @@ class Signup extends React.Component {
       <View style={styles.container} >
       	<View style={_styles.body} >
           <TextInput
-        		placeholder={"Email"}
+        		autoCapitalize={'none'}
+            placeholder={"Email"}
             value={this.state.email}
         		onChangeText={(text) => this.setState({email:text})}
         		style={styles.input} />
 
         	<TextInput
+            autoCapitalize={'none'}
             placeholder={"Password"}
         		secureTextEntry={true}
         		value={this.state.password}
@@ -42,6 +45,7 @@ class Signup extends React.Component {
         		style={styles.input} />
 
         	<TextInput
+            autoCapitalize={'none'}
             placeholder={"confirm Password"}
         		secureTextEntry={true}
         		value={this.state.passwordConfirmation}
@@ -78,8 +82,9 @@ class Signup extends React.Component {
   			});			
   			console.log("Error creating user:", error);
   		} else {
-  			this.props.navigator.immediatelyResetRouteStack([{name: 'tweets'}]);
-  			console.log("Successfully created user account:", userData);
+        //AsyncStorage.setItem('authData', JSON.stringify(userData));
+  			this.props.navigator.immediatelyResetRouteStack([{name: 'todoMain'}]);
+  			//console.log("Successfully created user account:", userData);
   		}
   	});
   	this.setState({

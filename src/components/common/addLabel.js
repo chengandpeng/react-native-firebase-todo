@@ -22,6 +22,7 @@ class AddLabel extends React.Component {
     return (
       <View style={styles.nav}>
     		<TextInput placeholder={"input item"}
+    		autoCapitalize={'none'}
     		style={styles.input}
     		value={this.state.newItem}
     		onChangeText={(text) => this.setState({newItem: text})} 
@@ -39,13 +40,15 @@ class AddLabel extends React.Component {
   }
 
   onPress() {
-  	this.props.userRef.push({
-  		title: this.state.newItem,
-  		done: false
-  	});
-  	this.setState({
-  		newItem: '' 
-  	});
+    if(this.state.newItem) {
+    	this.props.userRef.push({
+    		title: this.state.newItem,
+    		done: false
+    	});
+    	this.setState({
+    		newItem: '' 
+    	});
+    }
   }
 }
 
