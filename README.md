@@ -5,5 +5,5 @@
 git clone https://github.com/chengandpeng/react-native-firebase-todo.git
 npm install
 npm start
-react-native run-ios  // or  react-native run-android
+react-native run-ios
 ```
