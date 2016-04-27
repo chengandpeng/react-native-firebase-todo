@@ -83,7 +83,7 @@ class Signup extends React.Component {
   			console.log("Error creating user:", error);
   		} else {
         //AsyncStorage.setItem('authData', JSON.stringify(userData));
-  			this.props.navigator.immediatelyResetRouteStack([{name: 'todoMain'}]);
+  			this.props.navigator.immediatelyResetRouteStack([{name: 'signin'}]);
   			//console.log("Successfully created user account:", userData);
   		}
   	});
