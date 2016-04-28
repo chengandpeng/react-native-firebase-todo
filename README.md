@@ -12,5 +12,5 @@ react-native run-ios
 ```
 
 ## Sample
-![todo1](https://github.com/chengandpeng/react-native-firebase-todo/blob/master/todo1.gif?raw=true)
-![todo2](https://github.com/chengandpeng/react-native-firebase-todo/blob/master/todo2.gif?raw=true)
+![todo1](https://raw.githubusercontent.com/chengandpeng/react-native-firebase-todo/master/todo1.gif)
+![todo2](https://raw.githubusercontent.com/chengandpeng/react-native-firebase-todo/master/todo2.gif)
