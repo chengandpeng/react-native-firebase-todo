@@ -61,26 +61,28 @@ class Signin extends React.Component {
   	this.setState({
   		errorMessage: '' 
   	});
-  	ref.authWithPassword({
-  		email: this.state.email,
-  		password: this.state.password
-  	}, (error, authData) => {
-  		if (error) {
-  			this.setState({
-  				errorMessage: error.toString() 
-  			});
-  			console.log("Login Failed!", error);
-  		} else {
-        AsyncStorage.setItem('authData', JSON.stringify(authData));
-				this.props.navigator.immediatelyResetRouteStack([{name: 'todoMain'}]);
-  			//console.log("Authenticated sccessfully with payload:", authData);
-  		}
-  	}, {
-  		remember: 'sessionOnly'
-  	});
-  	this.setState({
-  		password: ''
-  	});
+    if (this.state.email && this.state.password) {
+    	ref.authWithPassword({
+    		email: this.state.email,
+    		password: this.state.password
+    	}, (error, authData) => {
+    		if (error) {
+    			this.setState({
+    				errorMessage: error.toString() 
+    			});
+    			console.log("Login Failed!", error);
+    		} else {
+          AsyncStorage.setItem('authData', JSON.stringify(authData));
+  				this.props.navigator.immediatelyResetRouteStack([{name: 'todoMain'}]);
+    			//console.log("Authenticated sccessfully with payload:", authData);
+    		}
+    	}, {
+    		remember: 'sessionOnly'
+    	});
+    	this.setState({
+    		password: ''
+    	});
+    }
   }
 }
 

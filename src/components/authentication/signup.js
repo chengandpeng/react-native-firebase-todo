@@ -5,7 +5,8 @@ import React, {
   View,
   Text,
   TextInput,
-  AsyncStorage
+  AsyncStorage,
+  Alert
 } from 'react-native';
 import Firebase from 'firebase';
 import Button from '../common/button';
@@ -65,7 +66,8 @@ class Signup extends React.Component {
   onSignupPress() {
   	this.setState({
   		errorMessage: '' 
-  	});
+  	});     
+
   	if (this.state.password !== this.state.passwordConfirmation) {
   		return this.setState({
   			errorMessage: 'Your passwords do not match' 
@@ -82,16 +84,21 @@ class Signup extends React.Component {
   			});			
   			console.log("Error creating user:", error);
   		} else {
-        //AsyncStorage.setItem('authData', JSON.stringify(userData));
-  			this.props.navigator.immediatelyResetRouteStack([{name: 'signin'}]);
-  			//console.log("Successfully created user account:", userData);
+        Alert.alert(
+          'Sign up Successfully',
+          'Please sign in again',
+          [
+            
+            {text: 'OK', onPress: () => this.props.navigator.immediatelyResetRouteStack([{name: 'signin'}])},
+          ]
+        )
   		}
   	});
   	this.setState({
   		password: '',
   		passwordConfirmation: ''
   	});
-  }
+   }
 
   onSigninPress() {
   	this.props.navigator.pop();
